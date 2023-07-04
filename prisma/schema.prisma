@@ -2,72 +2,72 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 model PageCategory {
-  name  String @id @db.VarChar(30)
-  pages Page[]
+    name  String @id @db.VarChar(30)
+    pages Page[]
 }
 
 model Page {
-  alias        String       @id
-  category     PageCategory @relation(fields: [categoryName], references: [name], onDelete: Cascade, onUpdate: Cascade)
-  categoryName String       @db.VarChar(30)
-  pageTitle    String       @db.VarChar(50)
-  contentTitle String       @db.VarChar(100)
-  content      String       @db.Text()
+    alias        String       @id
+    category     PageCategory @relation(fields: [categoryName], references: [name], onDelete: Cascade, onUpdate: Cascade)
+    categoryName String       @db.VarChar(30)
+    pageTitle    String       @db.VarChar(50)
+    contentTitle String       @db.VarChar(100)
+    content      String       @db.Text()
 }
 
 model News {
-  alias       String   @id
-  title       String   @db.VarChar(100)
-  date        DateTime @db.Date()
-  description String   @db.VarChar(255)
-  text        String   @db.Text()
+    alias       String   @id
+    title       String   @db.VarChar(100)
+    date        DateTime @db.Date()
+    description String   @db.VarChar(255)
+    text        String   @db.Text()
 }
 
 model Ivestment {
-  alias       String @id
-  title       String @db.VarChar(100)
-  description String @db.Text()
+    alias       String @id
+    title       String @db.VarChar(100)
+    description String @db.Text()
 }
 
 model LeasingCategory {
-  alias    String    @id
-  name     String    @unique @db.VarChar(100)
-  leasings Leasing[]
+    alias    String    @id
+    name     String    @unique @db.VarChar(100)
+    leasings Leasing[]
 }
 
 model Leasing {
-  alias        String          @id
-  title        String          @db.VarChar(100)
-  category     LeasingCategory @relation(fields: [categoryName], references: [name], onDelete: Cascade, onUpdate: Cascade)
-  categoryName String          @db.VarChar(100)
+    alias        String          @id
+    title        String          @db.VarChar(100)
+    category     LeasingCategory @relation(fields: [categoryName], references: [name], onDelete: Cascade, onUpdate: Cascade)
+    categoryName String          @db.VarChar(100)
 }
 
 model CompanyContacts {
-  companyName String @id @db.VarChar(50)
-  address     String @db.Text()
-  phone       String @db.VarChar(18)
-  email       String @db.VarChar(50)
+    companyName String @id @db.VarChar(50)
+    address     String @db.Text()
+    phone       String @db.VarChar(18)
+    email       String @db.VarChar(50)
 }
 
 model Lessee {
-  alias       String @id
-  title       String @db.VarChar(50)
-  description String @db.Text()
-  imageUrl    String @db.VarChar(255)
+    alias       String @id
+    title       String @db.VarChar(50)
+    description String @db.Text()
+    imageUrl    String @db.VarChar(255)
 }
 
 model Partner {
-  alias       String @id
-  title       String @db.VarChar(50)
-  description String @db.Text()
-  imageUrl    String @db.VarChar(255)
+    alias       String @id
+    title       String @db.VarChar(50)
+    description String @db.Text()
+    imageUrl    String @db.VarChar(255)
 }
